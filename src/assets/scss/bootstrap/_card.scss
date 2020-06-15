@@ -5,6 +5,7 @@
 .card {
   position: relative;
   display: flex;
+  margin-bottom: 30px;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -120,7 +121,10 @@
 }
 
 .card-img {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  display: block; 
+  margin: 0px auto;
+  margin-bottom: 5%;
+  width: 80%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-radius($card-inner-border-radius);
 }
 

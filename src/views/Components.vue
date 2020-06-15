@@ -1,6 +1,7 @@
 <template>
     <div>
         <hero></hero>
+        ///////////////여기 아래는 다 지울 거에요용
         <basic-elements></basic-elements>
         <inputs></inputs>
         <custom-controls></custom-controls>
