@@ -20,14 +20,14 @@
                         <p class="lead text-white mt-4 mb-5">'행복 보드 게임^____^' 은 당신이 원하는 보드 게임을 찾을 수 있게 다양한 정보를 제공 해줍니다.<br/><br/> 아래 버튼을 눌러 게임을 추천 받아 보세요!</p>
                         <br/>
                         <div class="btn-wrapper">
-                            
-                            <base-button tag="a"
-                                         href="https://www.creative-tim.com/product/vue-argon-design-system"
+                            <router-link to="/recommand">
+                            <base-button 
                                          class="mb-3 mb-sm-0"
                                          type="white"
                                          icon="ni ni-like-2">
                                 Recommand Game
                             </base-button>
+                            </router-link>
                         </div>
                     </div>
                 </div>

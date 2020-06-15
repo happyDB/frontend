@@ -3,10 +3,12 @@ import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 import Components from "./views/Components.vue";
-import Landing from "./views/Landing.vue";
+import Recommand from "./views/Recommand.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
+import SearchGame from "./views/SearchGame.vue";
+import SearchStore from "./views/SearchStore.vue";
 
 Vue.use(Router);
 
@@ -23,11 +25,11 @@ export default new Router({
       }
     },
     {
-      path: "/landing",
-      name: "landing",
+      path: "/recommand",
+      name: "recommand",
       components: {
         header: AppHeader,
-        default: Landing,
+        default: Recommand,
         footer: AppFooter
       }
     },
@@ -55,6 +57,24 @@ export default new Router({
       components: {
         header: AppHeader,
         default: Profile,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/searchgame",
+      name: "searchgame",
+      components: {
+        header: AppHeader,
+        default: SearchGame,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/searchstore",
+      name: "searchstore",
+      components: {
+        header: AppHeader,
+        default: SearchStore,
         footer: AppFooter
       }
     }

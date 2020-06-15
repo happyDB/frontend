@@ -2,28 +2,28 @@
     <header class="header-global">
         <base-nav class="navbar-main" transparent type="" effect="light" expand>
             <router-link slot="brand" class="navbar-brand mr-lg-5" to="/">
-                <img src="img/brand/happy-white.png" alt="logo" style="width:100px; height:40px;">
+                <img src="img/brand/happy-white.png" alt="logo" style="width:110px; height:45px;">
             </router-link>
 
             <div class="row" slot="content-header" slot-scope="{closeMenu}">
                 <div class="col-6 collapse-brand">
-                    <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/">
-                        <img src="img/brand/blue.png">
-                    </a>
+                    <router-link slot="brand" class="navbar-brand mr-lg-5" to="/">
+                        <img src="img/brand/Happy-blue.png" style="width: 110px; height: 40px">
+                    </router-link>
                 </div>
                 <div class="col-6 collapse-close">
                     <close-button @click="closeMenu"></close-button>
                 </div>
             </div>
-
-            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+            
+            <ul v-if="loginCheck" class="navbar-nav navbar-nav-hover align-items-lg-center">
                 <base-dropdown class="nav-item" menu-classes="dropdown-menu-xl">
                     <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
                         <i class="ni ni-ui-04 d-lg-none"></i>
                         <span class="nav-link-inner--text">Search</span>
                     </a>
                     <div class="dropdown-menu-inner">
-                       <router-link to="/landing"
+                       <router-link to="/searchgame"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                 <i class="ni ni-spaceship"></i>
@@ -33,7 +33,7 @@
                                 <p class="description d-none d-md-inline-block mb-0">다양한 카테고리를 통해 원하는 게임을 검색하기</p>
                             </div>
                        </router-link>
-                        <router-link to="/landing"
+                        <router-link to="/searchstore"
                            class="media d-flex align-items-center">
                             <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                                 <i class="ni ni-ui-04"></i>
@@ -47,36 +47,41 @@
                 </base-dropdown>
                 <base-dropdown tag="li" class="nav-item">
                     <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
-                        <i class="ni ni-collection d-lg-none"></i>
-                        <span class="nav-link-inner--text">Examples</span>
+                        <i class="ni ni-collection d-lg-none"></i> Review
+                        <span class="nav-link-inner--text"></span>
                     </a>
-                    <router-link to="/landing" class="dropdown-item">Landing</router-link>
-                    <router-link to="/profile" class="dropdown-item">Profile</router-link>
-                    <router-link to="/login" class="dropdown-item">Login</router-link>
-                    <router-link to="/register" class="dropdown-item">Register</router-link>
+                    <router-link to="/landing" class="dropdown-item">여기 쓸거 있나?</router-link>
+                    <router-link to="/profile" class="dropdown-item">냐냔냐?</router-link>
+                    
+                   
+                </base-dropdown>
+       
+                    <router-link to="/recommand" class="nav-link">
+                        <i class="ni ni-collection d-lg-none"></i> Recommand
+                        <span class="nav-link-inner--text"></span>
+                    </router-link>
+                   
+
+               
+                 <base-dropdown tag="li" class="nav-item">
+                    <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
+                        <i class="ni ni-collection d-lg-none"></i> Manage
+                        <span class="nav-link-inner--text"></span>
+                    </a>
+                    <router-link to="/landing" class="dropdown-item">이건 매장 주인만 보이게</router-link>
+
+                   
                 </base-dropdown>
             </ul>
-            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <ul  v-if="loginCheck" class="navbar-nav align-items-lg-center ml-lg-auto">
+            
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" rel="noopener"
-                       data-toggle="tooltip" title="Like us on Facebook">
-                        <i class="fa fa-facebook-square"></i>
-                        <span class="nav-link-inner--text d-lg-none">Facebook</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial"
-                       target="_blank" rel="noopener" data-toggle="tooltip" title="Follow us on Instagram">
-                        <i class="fa fa-instagram"></i>
-                        <span class="nav-link-inner--text d-lg-none">Instagram</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" rel="noopener"
-                       data-toggle="tooltip" title="Follow us on Twitter">
-                        <i class="fa fa-twitter-square"></i>
-                        <span class="nav-link-inner--text d-lg-none">Twitter</span>
-                    </a>
+                    <router-link class="nav-link nav-link-icon" 
+                       to="/profile" title="my Page">
+                        <span  class="description d-none d-md-inline-block mb-0" style="margin-right: 10px; font-size:12px;">환영합니다 ! </span>
+                        <i class="fa fa-user"></i>
+                        <span class="nav-link-inner--text "> {{this.user.nickName}} 님</span>
+                    </router-link>
                 </li>
                 <li class="nav-item" v-if="loginCheck">
                     <span class="nav-link nav-link-icon" v-on:click="logout"
@@ -105,12 +110,20 @@ export default {
   data() {
     return {
       loginCheck : false,
+      user:{
+          nickName: '',
+          Id: '',
+      },
     
     }
   },
    async beforeCreate() {
     const result = await axios.get("/api/login");
     this.loginCheck = result.data.logined;
+    if(this.loginCheck) 
+    {
+        this.user.nickName= result.data.nickname;
+    }
 
   }, 
   methods:{

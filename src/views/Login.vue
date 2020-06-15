@@ -21,7 +21,8 @@
                         <template>
                           
                             <div class="text-center text-muted mb-4">
-                                <big>Log in</big>
+                                <br/>
+                                <big>SIGN IN</big>
                             </div>
                             <form role="form">
                                 <base-input alternative
@@ -40,7 +41,7 @@
                                     Remember me
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <br/>
+                                 
                                     <br/>
                                     <base-button type="primary" class="my-4" v-on:click="login" >Sign In</base-button>
                                 </div>
