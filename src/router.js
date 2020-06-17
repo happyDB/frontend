@@ -9,6 +9,7 @@ import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import SearchGame from "./views/SearchGame.vue";
 import SearchStore from "./views/SearchStore.vue";
+import Review from "./views/Review.vue"
 
 Vue.use(Router);
 
@@ -75,6 +76,15 @@ export default new Router({
       components: {
         header: AppHeader,
         default: SearchStore,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/review",
+      name: "review",
+      components: {
+        header: AppHeader,
+        default: Review,
         footer: AppFooter
       }
     }

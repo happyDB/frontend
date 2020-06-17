@@ -50,8 +50,8 @@
                         <i class="ni ni-collection d-lg-none"></i> Review
                         <span class="nav-link-inner--text"></span>
                     </a>
-                    <router-link to="/landing" class="dropdown-item">여기 쓸거 있나?</router-link>
-                    <router-link to="/profile" class="dropdown-item">냐냔냐?</router-link>
+                    <router-link to="/review" class="dropdown-item">리뷰 남기기</router-link>
+                    <router-link to="/profile" class="dropdown-item">리뷰 보기</router-link>
                     
                    
                 </base-dropdown>

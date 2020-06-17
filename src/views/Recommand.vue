@@ -19,24 +19,45 @@
                     <div class="col px-0">
                         <div class="row">
                             <div class="col-lg-7">
-                                <h1 class="display-2  text-white">Recommad Board Games
+                                <h1 class="display-2  text-white">Recommand Board Games
                                    
                                 </h1>
                                 <p class="lead  text-white">이런 게임도 좀 하고 사십셔~~</p>
                                 
                             </div>
+                            
                         </div>
                     </div>
+                   
+                    
                 </div>
+                 
             </section>
+            
             <!-- 1st Hero Variation -->
         </div>
+       
         <section class="section section-lg pt-lg-0 mt--200">
             <div class="container">
+                         
+                <div class="order-menu">
+                  <span style="margin: 7px;">
+                      <a slot="title" href="#/recommand" > 
+                      <i class="fa fa-check"/> 맞춤 추천 
+                      </a> 
+                      </span>|  
+                      <span style="margin: 7px;"> 
+                          <a slot="title" href="#/recommand"> 
+                          <i class="fa fa-star"/> 평점순  
+                          </a>
+                      </span>
+                </div>
                 <div class="row justify-content-center">
+
                     <div class="col-lg-12">
                         <div class="row row-grid">
                             <div class="col-lg-4">
+                               
                                 <card class="border-0" hover shadow body-classes="py-5" >
                                     
                                     <!--icon name="ni ni-check-bold" type="primary" rounded class="mb-4">
@@ -46,7 +67,7 @@
                                     <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px;">할리갈리</h4>
                           
                                  
-                                    <GameRating :grade="3" :maxStars="5" :hasCounter="true" />
+                                    <GameRating :grade="5" :maxStars="5" :hasCounter="true" />
                                 
                                    </div>
                                     <p class="description mt-3"> 
@@ -197,3 +218,44 @@ export default {
     
 };
 </script>
+
+<style>
+.order-menu{
+   
+    position: relative; 
+    margin-top: -50px; 
+    padding-bottom: 30px;
+}
+.order-menu a:link {
+   color: #706f72;
+   white-space: nowrap;
+   text-decoration: none;
+}
+.order-menu a:visited {
+     text-decoration: none;
+     color: #706f72;
+}
+.order-menu a:hover {
+     color:#b1b0b1 !important;
+     text-decoration: none;
+     background-repeat: repeat-x;
+     background-position: 100% 100%;
+     padding-bottom: 3px;
+     
+     transition: color 0.5s;
+}
+@media all and (min-width:1000px) {
+    .order-menu{
+    color: white;
+    }
+    .order-menu a:link {
+    color: white;
+    }
+    .order-menu a:visited {
+     color: white;
+    }
+    .order-menu a:hover {
+     color:#b1b0b1;
+    }
+}
+</style>
