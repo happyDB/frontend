@@ -10,11 +10,7 @@
       <span class="divider">/</span>
       <span class="score-max">{{ maxStars }}</span>
     </div>
-    <ul class="list">
-      <li  v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star-2">
-      <i :class="star <= stars ? 'fa fa-star' : 'fa fa-star'"></i> 
-      </li>
-    </ul>
+    
   </div>
   
 </template>
