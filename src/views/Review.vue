@@ -24,7 +24,7 @@
                     </div>
                    
                     
-                </div>s
+                </div>
         </section>
         <section class="section section-skew">
             <div class="container">
@@ -89,14 +89,17 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import Rating from '../components/Ratings.vue'
+
 export default {
 
 name: "review",
  components: {
-    Rating
+    Rating,
   },
 }
+
 </script>
 <style>
 @media all and (min-width:1000px) {
