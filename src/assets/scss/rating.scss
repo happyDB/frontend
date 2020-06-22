@@ -18,6 +18,7 @@
         .star {
             display: inline-block;
             font-size: 20px;
+
             transition: all .2s ease-in-out; 
             cursor: pointer;
             &:hover {
@@ -71,7 +72,7 @@
     }
     .info {
         margin-top: 15px;
-        font-size: 25px;
+        font-size: 40px;
         text-align: center;
         display: table;
         .divider {
@@ -79,7 +80,7 @@
             font-size: 30px;
         }
         .score-max {
-            font-size: 25px;
+            font-size: 30px;
             vertical-align: sub;
         }
     }
