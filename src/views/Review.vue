@@ -65,6 +65,7 @@
                         <div class="text-center mt-3">
                             <h5 class="game-name">팽귄 얼음 깨기
                             </h5>
+                            
                            </div>
                            <Rating :grade="0" :maxStars="5" :hasCounter="true"/>
                         <div class="mt-5 py-5 border-top text-center">

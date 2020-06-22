@@ -61,23 +61,31 @@
                                 <card class="border-0" hover shadow body-classes="py-5" >
                                     
                                     <!--icon name="ni ni-check-bold" type="primary" rounded class="mb-4">
-                                    </icon--> <img class="card-img" :src="g.Img_url" >
+                                    </icon--> 
+                                    <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
+                                    <img class="card-img" :src="g.Img_url" >
+                                    </router-link>
                                    <div class="row row-grid">
-                                  
-                                    <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px;">{{ checkBoardTitle(g.Title) }}</h4>
-                          
-                                 
-                                    <GameRating :grade="5" :maxStars="5" :hasCounter="true" />
+                                  <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
+                                    <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px; float:left;">{{ checkBoardTitle(g.Title) }}</h4>
+                                  </router-link>
+                                   
+                                   
                                 
                                    </div>
                                     <p class="description mt-3"> 
+                                        
+                                    <!--div v-for="genre in getGenreList(g.Board_game_ID)" :key="genre.Board_game_ID"-->
                                     <div>
-                                        <badge type="primary" rounded>party game</badge>
-                                        <badge type="primary" rounded>speedy</badge>
+
+                                        <badge type="primary" rounded>{{g.Genre}}</badge>
+                            
                                     </div>
+                                    <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
                                     <base-button tag="a" href="#" type="primary" class="mt-4">
                                         More Detail..
                                     </base-button>
+                                    </router-link>
                                 </card>
                             </div>
                            
@@ -120,19 +128,24 @@ export default {
         
       },
       recommandGames: '',
+      toggleHeart: [],
+      genreList:'',
+
+
     }
     
   },
   async beforeCreate() { //백엔드에서 games 가져오는 rest.
             const result = await axios.get("/api/games/recommand");
             this.recommandGames = result.data;
-           // alert(this.recommandGames[1].Title);
+
+           
   },
 
   methods:{
         checkBoardTitle(title) {
             
-                if (title.length > 6) return title.substring(0, 6) + "...";
+                if (title.length > 6) return title.substring(0, 9) + "...";
                 else return title;
          },
         getPageIndex(index)
@@ -145,6 +158,11 @@ export default {
             
             let result = this.recommandGames.slice(start, end);//get으로 page 크기만큼 보드게임 정보 DB에서 받아오기!!!
             return result;
+        },
+        
+        Heart2game(boardgameID)
+        {
+            this.toggleHeart = !this.toggleHeart;
         }
     },
     
@@ -181,6 +199,18 @@ export default {
      padding-bottom: 3px;
      
      transition: color 0.5s;
+}
+#non-heart{
+    color: gray;
+    float: right;
+    margin-top: 5px;
+    font-size: 20px;
+}
+#heart{
+    color: red;
+    float: right;
+    margin-top: 5px;
+    font-size: 20px;
 }
 @media all and (min-width:1000px) {
     .order-menu{

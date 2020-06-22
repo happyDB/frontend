@@ -10,6 +10,7 @@ import Profile from "./views/Profile.vue";
 import SearchGame from "./views/SearchGame.vue";
 import SearchStore from "./views/SearchStore.vue";
 import Review from "./views/Review.vue"
+import BoardgameDetail from "./views/BoardgameDetail.vue"
 
 Vue.use(Router);
 
@@ -87,7 +88,16 @@ export default new Router({
         default: Review,
         footer: AppFooter
       }
-    }
+    },
+    {
+      path: "/boardgame/:idx",
+      name: "boardgame",
+      components: {
+        header: AppHeader,
+        default: BoardgameDetail,
+        footer: AppFooter
+      }
+    },
   ],
   scrollBehavior: to => {
     if (to.hash) {

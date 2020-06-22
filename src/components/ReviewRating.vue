@@ -1,16 +1,12 @@
 <template>
-  <div class="rating">
-    <!--div v-if="hasCounter" class="info-2 counter">
-      <span class="score-rating">{{ stars }}</span>
-      <span class="divider">/</span>
-      <span class="score-max">{{ maxStars }}</span>//   3/5로 비율 나타내는 부분
-    </div-->
+  <span class="rating">
+   
     <ul class="list">
-      <li  v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star-2">
+      <li  v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star-3">
       <i :class="star <= stars ? 'fa fa-star' : 'fa fa-star'"></i> 
       </li>
     </ul>
-  </div>
+  </span>
   
 </template>
 <script>
@@ -41,5 +37,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import '../assets/scss/rating.scss';
-
 </style>
