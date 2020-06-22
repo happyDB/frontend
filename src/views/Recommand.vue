@@ -69,13 +69,8 @@
                                   <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
                                     <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px; float:left;">{{ checkBoardTitle(g.Title) }}</h4>
                                   </router-link>
-                                    <div style="float: right; left: 80%; width: 30px; position: absolute">
-                                    <a slot="title" href="#/recommand"> 
-                                    <i v-if="!toggleHeart" id="non-heart" class="fa fa-heart" v-on:click="Heart2game(g.Board_game_ID)"/>
-                                    <i v-else id="heart" class="fa fa-heart" v-on:click="Heart2game(g.Board_game_ID)"/>
-                                    </a>
-                                    </div>
-                                    <!--GameRating :grade="5" :maxStars="5" :hasCounter="true" /-->
+                                   
+                                   
                                 
                                    </div>
                                     <p class="description mt-3"> 

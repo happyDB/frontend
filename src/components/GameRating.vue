@@ -29,6 +29,12 @@ export default {
       }
     }
   },
+  watch:{
+    grade: function(newVal, oldVal) { // watch it
+          console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+          this.stars=newVal
+        }
+  }
 }
 </script>
 

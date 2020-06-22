@@ -1,22 +1,17 @@
 <template>
-  <div class="rating">
+  <span class="rating">
+   
     <ul class="list">
-      <li @click="rate(star)" v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star">
+      <li  v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star-3">
       <i :class="star <= stars ? 'fa fa-star' : 'fa fa-star'"></i> 
       </li>
     </ul>
-    <!--div v-if="hasCounter" class="info counter">
-      <span class="score-rating">{{ stars }}</span>
-      <span class="divider">/</span>
-      <span class="score-max">{{ maxStars }}</span>
-    </div-->
-    
-  </div>
+  </span>
   
 </template>
 <script>
 export default {
-  name: 'Rating',
+  name: 'GameRating',
   props: ['grade', 'maxStars', 'hasCounter'],
   data() {
     return {
@@ -27,17 +22,15 @@ export default {
     rate(star) {
       if (typeof star === 'number' && star <= this.maxStars && star >= 0) {
         this.stars = this.stars === star ? star - 1 : star
-         this.$emit("input", this.stars);
       }
     }
   },
-   watch:{
+  watch:{
     grade: function(newVal, oldVal) { // watch it
           console.log('Prop changed: ', newVal, ' | was: ', oldVal)
           this.stars=newVal
         }
   }
-  
 }
 </script>
 
