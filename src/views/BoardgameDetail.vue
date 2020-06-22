@@ -119,7 +119,7 @@
                                         </div>
                                      <div style="float: right;">
                                          <div  style="float:left; margin-right: 10px;">
-                                          <Rating :grade="defaultRate" :maxStars="5" :hasCounter="true" @input="getRating"/>
+                                          <Rating :grade="0" :maxStars="5" :hasCounter="true" @input="getRating"/>
                                          </div>
                                          <div style="float: right;">
                                         <base-button type="info" size="sm" class="mr-4" @click="addComment">Save</base-button>
@@ -161,14 +161,12 @@ data() {
       userID: '',
       boardgame: '',
       toggleHeart: false,
-      genreList:'',
       content: '',
       reviewList:[],
       genreList:[],
       reviewRating: 0,
       gameRating: 5,
       numOfPlayer:[],
-      defaultRate: 0,
 
 
 
@@ -252,7 +250,6 @@ async beforeCreate() { //백엔드에서 games 가져오는 rest.
                     var id = this.$route.params.idx
                     await axios.post("/api/games/boardgame/"+id+"/review",{content :this.checkInput(this.content), userID : this.userID, rating: this.reviewRating});
                     this.content='';
-                    
                     const reviewresult = await axios.get("/api/games/boardgame/"+id+"/review");
                     this.reviewList =  reviewresult.data;
                      //this.computeRating();
@@ -260,7 +257,6 @@ async beforeCreate() { //백엔드에서 games 가져오는 rest.
      },
      getRating(stars){
          this.reviewRating=stars;
-         this.defaultRate=0;
          //alert(this.reviewRating);
      }
   },

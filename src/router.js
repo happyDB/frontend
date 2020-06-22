@@ -9,7 +9,7 @@ import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import SearchGame from "./views/SearchGame.vue";
 import SearchStore from "./views/SearchStore.vue";
-import Review from "./views/Review.vue"
+import Likes from "./views/Likes.vue"
 import BoardgameDetail from "./views/BoardgameDetail.vue"
 
 Vue.use(Router);
@@ -81,11 +81,11 @@ export default new Router({
       }
     },
     {
-      path: "/review",
-      name: "review",
+      path: "/likes",
+      name: "likes",
       components: {
         header: AppHeader,
-        default: Review,
+        default: Likes,
         footer: AppFooter
       }
     },

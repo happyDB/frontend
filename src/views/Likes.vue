@@ -19,10 +19,10 @@
                     <div class="col px-0">
                         <div class="row">
                             <div class="col-lg-7">
-                                <h1 class="display-2  text-white">Recommand Board Games
+                                <h1 class="display-2  text-white">Likes: Board Games
                                    
                                 </h1>
-                                <p class="lead  text-white">이런 게임도 좀 하고 사십셔~~</p>
+                                <p class="lead  text-white">당신이 '좋아요'한 바로 그 게임!</p>
                                 
                             </div>
                             
@@ -127,7 +127,7 @@ export default {
         pageSize: 6,
         
       },
-      recommandGames: '',
+      likeGames: '',
       toggleHeart: [],
       genreList:'',
 
@@ -136,13 +136,8 @@ export default {
     
   },
   async beforeCreate() { //백엔드에서 games 가져오는 rest.
-            const result = await axios.get("/api/games/recommand");
-            this.recommandGames = result.data;
-            if(this.recommandGames=='')
-            {
-                 const allresult = await axios.get("/api/games/all");
-                 this.recommandGames= allresult.data;
-            }
+            const result = await axios.get("/api/games/likes");
+            this.likeGames = result.data;
 
            
   },
@@ -150,7 +145,7 @@ export default {
   methods:{
         checkBoardTitle(title) {
             
-                if (title.length > 6) return title.substring(0, 9) + "...";
+                if (title.length > 9) return title.substring(0, 9) + "...";
                 else return title;
          },
         getPageIndex(index)
@@ -161,14 +156,11 @@ export default {
             const start = (this.pagination.currentPage-1) * this.pagination.pageSize,
                 end = start + this.pagination.pageSize;
             
-            let result = this.recommandGames.slice(start, end);//get으로 page 크기만큼 보드게임 정보 DB에서 받아오기!!!
+            let result = this.likeGames.slice(start, end);//get으로 page 크기만큼 보드게임 정보 DB에서 받아오기!!!
             return result;
         },
         
-        Heart2game(boardgameID)
-        {
-            this.toggleHeart = !this.toggleHeart;
-        }
+        
     },
     
 };

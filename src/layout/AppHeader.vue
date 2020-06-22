@@ -45,16 +45,10 @@
                         </router-link>
                     </div>
                 </base-dropdown>
-                <base-dropdown tag="li" class="nav-item">
-                    <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
-                        <i class="ni ni-collection d-lg-none"></i> Review
+                 <router-link to="/likes" class="nav-link">
+                        <i class="fa fa-heart d-lg-none"></i> Likes
                         <span class="nav-link-inner--text"></span>
-                    </a>
-                    <router-link to="/review" class="dropdown-item">리뷰 남기기</router-link>
-                    <router-link to="/profile" class="dropdown-item">리뷰 보기</router-link>
-                    
-                   
-                </base-dropdown>
+                    </router-link>
        
                     <router-link to="/recommand" class="nav-link">
                         <i class="ni ni-collection d-lg-none"></i> Recommand
