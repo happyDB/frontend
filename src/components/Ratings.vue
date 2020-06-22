@@ -1,47 +1,3 @@
-<<<<<<< HEAD
-<template>
-  <div class="rating">
-    <ul class="list">
-      <li @click="rate(star)" v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star">
-      <i :class="star <= stars ? 'fa fa-star' : 'fa fa-star'"></i> 
-      </li>
-    </ul>
-    <div v-if="hasCounter" class="info counter">
-      <span class="score-rating">{{ stars }}</span>
-      <span class="divider">/</span>
-      <span class="score-max">{{ maxStars }}</span>
-    </div>
-    <ul class="list">
-      <li  v-for="star in maxStars" :class="{ 'active': star <= stars }" :key="star.stars" class="star-2">
-      <i :class="star <= stars ? 'fa fa-star' : 'fa fa-star'"></i> 
-      </li>
-    </ul>
-  </div>
-  
-</template>
-<script>
-export default {
-  name: 'Rating',
-  props: ['grade', 'maxStars', 'hasCounter'],
-  data() {
-    return {
-      stars: this.grade
-    }
-  },
-  methods: {
-    rate(star) {
-      if (typeof star === 'number' && star <= this.maxStars && star >= 0) {
-        this.stars = this.stars === star ? star - 1 : star
-      }
-    }
-  },
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-  @import '../assets/scss/rating.scss';
-=======
 <template>
   <div class="rating">
     <ul class="list">
@@ -80,5 +36,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   @import '../assets/scss/rating.scss';
->>>>>>> master
 </style>
