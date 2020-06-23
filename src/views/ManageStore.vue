@@ -27,11 +27,11 @@
                 </div>
         </section>
         <section class="section section-skew">
-            <div class="container">
+            <div v-if = "goF" class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
                        
-                        <h4 class="display-4" style="padding-top:5%; padding-left:5%;"> 매장명 :: 아주보드게임</h4>
+                        <h4 class="display-4" style="padding-top:5%; padding-left:5%;">매장 등록 ::</h4>
                             
                           
                         <div class="mt-5 py-5 border-top text-center">
@@ -40,28 +40,35 @@
                                
                                 <div class="col-lg-9">
                                  <div class="row">
-                                     <div v-if="!action2" class="col-lg-12 " style="padding-bottom:20px;">
-                                         <span>현재 보유 중인 보드게임이 없습니다. 아래 검색을 통해 추가 해보세요!</span>
-                                     </div>
-                                     <div v-else class="col-lg-9 " style="padding-bottom:20px;">
-                                         <h5 style="margin-left:-250px; padding:10px; font-weight: bold;">Board Game List</h5>
-                                          <span id="commentWriter"> 할리갈리 링크 </span>
-                                        <span id="commentContent">가족게임 | 어린이게임 | 파티게임</span>
-                                        <a href="#/managestore" @click="a3"><span style="color:red; font-weight: bold; margin-left:10px;"> X </span></a>
-                                          </div>
-                                     <div class="col-lg-12 ">
-                                             <hr align="left" style ="color : #dddfe6; border: 1px solid;  margin-top:2%; border-style: dashed;"/>
-                                             <h5 class="display-5" style="padding-bottom:30px; padding-top:5%; padding-left:5%;">Search Board Game</h5>
-                                        <div class="col-lg-9 " style="float:left;">
-                                        
-                                       <input type="text" id="writeComment" @keyup.enter="addComment" v-model="content"  placeholder = "Search"/>
-                                        </div>
-                                     <div style="float: right;">
-                                        
-                                         <div style="float: right;">
-                                        <base-button type="info" size="sm" class="mr-4" @click="addComment">search</base-button>
+                                     <div class="col-lg-12 " style="padding-bottom:30px;">
+                                         <div style="float:left;">
+                                             <span>매장 이름 : </span>
+                                             <input type="text" id="writeName" v-model="name"  placeholder = ""/>
+                                         </div>
+                                         <div style="float:right;">
+                                             <span>매장 주소 : </span>
+                                             <input type="text" id="writeAdd1" v-model="add1"  placeholder = ""/>
                                          </div>
                                      </div>
+                                     <div class="col-lg-12 " style="padding-bottom:30px;">
+                                         <div style="float:left;">
+                                             <span>전화 번호 : </span>
+                                             <input type="text" id="writeNumber" v-model="number"  placeholder = ""/>
+                                         </div>
+                                         <div style="float:right;">
+                                             <span>상세 주소 : </span>
+                                             <input type="text" id="writeAdd2" v-model="add2"  placeholder = ""/>
+                                         </div>
+                                     </div>
+                                     <div class="col-lg-12 ">
+                                         <div style="float:left;">
+                                             <span>오픈 시간 : </span>
+                                             <input type="text" id="writeOpen" v-model="open"  placeholder = ""/>
+                                         </div>
+                                         <div style="float:right;">
+                                             <span>마감 시간 : </span>
+                                             <input type="text" id="writeClose" v-model="close"  placeholder = ""/>
+                                         </div>
                                      </div>
                                      
                            
@@ -74,6 +81,53 @@
        
   
                         </div>
+                        <div class="py-5 border-top text-center">
+                                                <base-button v-on:click="addStore" style="" type="info" size="sm" class="mr-4">Submit</base-button>
+                                          </div>
+                    </div>
+                </card>
+            </div>
+            <div v-else class="container">
+                <card shadow class="card-profile mt--300" no-body>
+                    <div class="px-4">
+                       <h4 v-if="!action1" class="display-4" style="padding-top:5%; padding-left:5%;">매장 관리 ::</h4>
+                        <h4 v-else class="display-4" style="padding-top:5%; padding-left:5%;">매장명 :: 아주보드게임</h4>
+                            
+                          
+                        <div class="mt-5 py-5 border-top text-center">
+                             
+                            <div class="row justify-content-center">
+                               
+                                <div class="col-lg-9">
+                                 <div class="row">
+                                     <div v-if="!action1" class="col-lg-12 " style="padding-bottom:20px;">
+                                         <span>현재 등록한 매장이 없습니다. 매장 등록 버튼을 통해 등록해주세요!</span>
+                                     </div>
+                                     <div v-else class="col-lg-12 ">
+                                         
+                                        <span><base-button type="info" size="sm" class="mr-4" style="margin-top:30px">게임목록</base-button></span>
+                                        <span><base-button style="margin-top:30px" type="info" size="sm" class="mr-4">수정하기</base-button></span>
+                                        <span><base-button style="margin-top:30px" type="info" size="sm" class="mr-4">삭제하기</base-button></span>
+                                          </div>
+                                          
+                                     
+                           
+                                 </div>
+                                 
+                                </div>
+                            </div>
+                          
+        
+       
+  
+                        </div>
+                        <div class="mt-5 py-5 border-top text-center">
+                                            <div v-if="!action1" class="col-lg-12 ">
+                                                <base-button v-on:click="goForm" style="margin-top:30px" type="info" size="sm" class="mr-4">Register</base-button>
+                                            </div>
+                                            <div v-else>
+                                            </div>
+                                          </div>
                     </div>
                 </card>
             </div>
@@ -95,7 +149,7 @@ name: "gameDetail",
   },
 data() {
     return {
-     
+      goF : false,  
       action1:false,
       action2:false,
       action3:false,
@@ -111,15 +165,18 @@ data() {
 
 
   methods: {
-      addComment(){
+      goForm(){
+          this.goF=!this.goF;
+      },
+      addStore(){
                 
-                if(this.content!='')
+                if(this.name!='')
                 {
                     
                    
-                    this.content='';
+                    this.name='';
                     this.action1=true;
-                   
+                   this.goF=!this.goF;
                 }
      },
      a2()
@@ -176,7 +233,7 @@ data() {
 #commentWriter{
     font-size: 15px;
     font-weight: bold;
-    margin-right: 1%;
+    margin-right: 5%;
 }
 #commentContent{
      margin-right: 1%;
