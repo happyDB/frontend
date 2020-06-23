@@ -60,7 +60,7 @@
                                              <input type="text" id="writeAdd2" v-model="add2"  placeholder = ""/>
                                          </div>
                                      </div>
-                                     <div class="col-lg-12 ">
+                                     <div class="col-lg-12" style="padding-bottom:30px;">
                                          <div style="float:left;">
                                              <span>오픈 시간 : </span>
                                              <input type="text" id="writeOpen" v-model="open"  placeholder = ""/>
@@ -70,8 +70,12 @@
                                              <input type="text" id="writeClose" v-model="close"  placeholder = ""/>
                                          </div>
                                      </div>
-                                     
-                           
+                                     <div class="col-lg-12 ">
+                                         <div style="float:left;">
+                                             <span>우편 번호 : </span>
+                                             <input type="text" id="writeZip" v-model="zip"  placeholder = ""/>
+                                         </div>
+                                     </div>
                                  </div>
                                  
                                 </div>
@@ -91,7 +95,7 @@
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
                        <h4 v-if="!action1" class="display-4" style="padding-top:5%; padding-left:5%;">매장 관리 ::</h4>
-                        <h4 v-else class="display-4" style="padding-top:5%; padding-left:5%;">매장명 :: 아주보드게임</h4>
+                        <h4 v-else class="display-4" style="padding-top:5%; padding-left:5%;">매장명 :: {{mS.Name}}</h4>
                             
                           
                         <div class="mt-5 py-5 border-top text-center">
@@ -154,12 +158,27 @@ data() {
       action2:false,
       action3:false,
       content: '',
-     
+      name : '',
+      add1 : '',
+      add2 : '',
+      number : '',
+      open : '',
+      close : '',
+      zip : '',
+      manageStore : '',
+      mS : ''
 
 
 
 
-
+    }
+},
+async beforeCreate() {
+    const result = await axios.get("api/games/manageStore");
+    this.mS = result.data[0];
+    console.log(this.mS);
+    if (this.mS!=null){
+        this.action1 = true;
     }
 },
 
@@ -168,16 +187,33 @@ data() {
       goForm(){
           this.goF=!this.goF;
       },
-      addStore(){
+      hasStore(){
+          this.goF=!this.goF;
+          this.action1=true;
+      },
+      addStore : function(){
                 
-                if(this.name!='')
-                {
-                    
-                   
-                    this.name='';
-                    this.action1=true;
-                   this.goF=!this.goF;
-                }
+        if(this.name!='')
+        {
+            axios.post('/api/games/manageStore', {
+                name : this.name,
+                add1 : this.add1,
+                add2 : this.add2,
+                number : this.number,
+                open : this.open,
+                close : this.close,
+                zip : this.zip
+            }
+        ).then(response=>{
+            console.log(response);
+            this.manageStore = response.data;
+            hasStore();
+        }).then(()=>{
+            
+            
+        })
+        }
+        console.log(this.manageStore);
      },
      a2()
      {
