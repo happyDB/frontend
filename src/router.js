@@ -9,7 +9,10 @@ import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import SearchGame from "./views/SearchGame.vue";
 import SearchStore from "./views/SearchStore.vue";
-import Review from "./views/Review.vue"
+import Likes from "./views/Likes.vue"
+import BoardgameDetail from "./views/BoardgameDetail.vue"
+import ManageStore from "./views/ManageStore.vue"
+import ManageGame from "./views/ManageGame.vue"
 
 Vue.use(Router);
 
@@ -80,15 +83,43 @@ export default new Router({
       }
     },
     {
-      path: "/review",
-      name: "review",
+      path: "/likes",
+      name: "likes",
       components: {
         header: AppHeader,
-        default: Review,
+        default: Likes,
         footer: AppFooter
       }
-    }
+    },
+    {
+      path: "/boardgame/:idx",
+      name: "boardgame",
+      components: {
+        header: AppHeader,
+        default: BoardgameDetail,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/managestore",
+      name: "managestore",
+      components: {
+        header: AppHeader,
+        default: ManageStore,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/managegame",
+      name: "managegame",
+      components: {
+        header: AppHeader,
+        default: ManageGame,
+        footer: AppFooter
+      }
+    },
   ],
+  
   scrollBehavior: to => {
     if (to.hash) {
       return { selector: to.hash };

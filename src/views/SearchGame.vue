@@ -576,7 +576,8 @@ export default {
             this.detail_search = 'off';
         },
         isSearched : function(){
-            this.searched = 'on'
+            this.searched = 'on';
+            this.isFolded();
 
             var uncheckedGenres = this.wholeGenres.filter(x => !this.checkedGenres.includes(x)); 
             var uncheckedTypes = this.wholeTypes.filter(x => !this.checkedTypes.includes(x)); 

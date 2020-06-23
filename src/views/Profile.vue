@@ -1,3 +1,4 @@
+
 <template>
     <div class="profile-page">
         <section class="section-profile-cover section-shaped my-0">
@@ -51,8 +52,8 @@
                                 <span class="font-weight-light">, 24</span>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>아주대학교/소프트웨어학과</div>
-                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>profile 페이지</div>
-                            <div><i class="ni education_hat mr-2"></i>매장 관리 페이지로 써도 괜찮을듯?</div>
+                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>정우's profile page</div>
+                            <div><i class="ni education_hat mr-2"></i>보드게임을 좋아하고, 더 많은 보드게임을 즐기기 원하는 20대 중반 사람</div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">

@@ -17,7 +17,8 @@
         }
         .star {
             display: inline-block;
-            font-size: 42px;
+            font-size: 20px;
+
             transition: all .2s ease-in-out; 
             cursor: pointer;
             &:hover {
@@ -33,6 +34,24 @@
             }
         }
         .star-2 {
+            display: inline-block;
+            font-size: 30px;
+            margin-top: 5px;
+            transition: all .2s ease-in-out; 
+            cursor: pointer;
+            &:hover {
+                ~ .star:not(.active) {
+                    color: inherit;
+                }
+            }
+            &:first-child {
+                margin-left: 0;
+            }
+            &.active {
+                color: #ffe100;
+            }
+        }
+        .star-3 {
             display: inline-block;
             font-size: 15px;
             margin-top: 5px;
