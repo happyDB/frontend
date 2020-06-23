@@ -232,10 +232,16 @@ async beforeCreate() { //백엔드에서 games 가져오는 rest.
         }
         sum=sum/l;
               //  alert(Math.round(sum))
+        this.updateRating(Math.round(sum));
+        //await axios.post("/api/games/boardgame/"+id+"/rating",{rating: rate});
         return Math.round(sum);
 
         
 
+    },
+    async updateRating(rate){
+        var id = this.$route.params.idx
+        await axios.post("/api/games/boardgame/"+id+"/rating",{rating: rate});
     },
   
     checkInput(input)//따옴표 check하는 코드

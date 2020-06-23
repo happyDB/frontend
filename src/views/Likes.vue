@@ -22,7 +22,7 @@
                                 <h1 class="display-2  text-white">Likes: Board Games
                                    
                                 </h1>
-                                <p class="lead  text-white">당신이 '좋아요'한 바로 그 게임!</p>
+                                <p class="lead  text-white">당신이 '좋아요' 한 바로 그 게임!</p>
                                 
                             </div>
                             
@@ -69,7 +69,9 @@
                                   <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
                                     <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px; float:left;">{{ checkBoardTitle(g.Title) }}</h4>
                                   </router-link>
-                                   
+                                  <div style="position: absolute; right: 10%;">
+                                  <ReviewRating :grade="g.Average_rating" :maxStars="5" :hasCounter="true" />
+                                   </div>
                                    
                                 
                                    </div>
@@ -112,13 +114,13 @@
 <script>
 import axios from 'axios'
 import Rating from '../components/Ratings.vue'
-import GameRating from '../components/GameRating.vue'
+import ReviewRating from '../components/ReviewRating.vue'
 export default {
 
   name: "home",
  components: {
     Rating,
-    GameRating
+    ReviewRating
   },
   data() {
     return {
@@ -145,7 +147,7 @@ export default {
   methods:{
         checkBoardTitle(title) {
             
-                if (title.length > 9) return title.substring(0, 9) + "...";
+                if (title.length > 6) return title.substring(0, 7) + "..";
                 else return title;
          },
         getPageIndex(index)

@@ -11,6 +11,8 @@ import SearchGame from "./views/SearchGame.vue";
 import SearchStore from "./views/SearchStore.vue";
 import Likes from "./views/Likes.vue"
 import BoardgameDetail from "./views/BoardgameDetail.vue"
+import ManageStore from "./views/ManageStore.vue"
+import ManageGame from "./views/ManageGame.vue"
 
 Vue.use(Router);
 
@@ -98,7 +100,26 @@ export default new Router({
         footer: AppFooter
       }
     },
+    {
+      path: "/managestore",
+      name: "managestore",
+      components: {
+        header: AppHeader,
+        default: ManageStore,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/managegame",
+      name: "managegame",
+      components: {
+        header: AppHeader,
+        default: ManageGame,
+        footer: AppFooter
+      }
+    },
   ],
+  
   scrollBehavior: to => {
     if (to.hash) {
       return { selector: to.hash };

@@ -58,13 +58,14 @@
                    
 
                
-                 <base-dropdown tag="li" class="nav-item">
+                 <base-dropdown v-if="storeManage" tag="li" class="nav-item">
                     <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
                         <i class="ni ni-collection d-lg-none"></i> Manage
                         <span class="nav-link-inner--text"></span>
                     </a>
-                    <router-link to="/landing" class="dropdown-item">이건 매장 주인만 보이게</router-link>
-
+                    <router-link to="/managestore" class="dropdown-item">매장 관리 </router-link>
+                    <router-link to="/managegame" class="dropdown-item">게임 관리 </router-link><!--링크 반대로 되어있음-->
+ 
                    
                 </base-dropdown>
             </ul>
@@ -105,9 +106,11 @@ export default {
   data() {
     return {
       loginCheck : false,
+      storeManage: false,
       user:{
           nickName: '',
           Id: '',
+          
       },
     
     }
@@ -116,8 +119,12 @@ export default {
     const result = await axios.get("/api/login");
     this.loginCheck = result.data.logined;
     if(this.loginCheck) 
-    {
+    {   
         this.user.nickName= result.data.nickname;
+        if(result.data.authority==0)
+        {
+            this.storeManage=true;
+        }
     }
 
   }, 
