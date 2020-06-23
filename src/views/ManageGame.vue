@@ -47,7 +47,7 @@
                                          <h5 style="margin-left:-250px; padding:10px; font-weight: bold;">Board Game List</h5>
                                           <span id="commentWriter"> 할리갈리 링크 </span>
                                         <span id="commentContent">가족게임 | 어린이게임 | 파티게임</span>
-                                        <a href="#/managestore" @click="a3"><span style="color:red; font-weight: bold; margin-left:10px;"> X </span></a>
+                                        <a href="#/managegame" @click="a3"><span style="color:red; font-weight: bold; margin-left:10px;"> X </span></a>
                                           </div>
                                      <div class="col-lg-12 ">
                                              <hr align="left" style ="color : #dddfe6; border: 1px solid;  margin-top:2%; border-style: dashed;"/>
