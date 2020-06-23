@@ -19,10 +19,10 @@
                     <div class="col px-0">
                         <div class="row">
                             <div class="col-lg-7">
-                                <h1 class="display-2  text-white">Recommand Board Games
+                                <h1 class="display-2  text-white">Likes: Board Games
                                    
                                 </h1>
-                                <p class="lead  text-white">당신을 위한 추천 게임을 즐겨보세요!</p>
+                                <p class="lead  text-white">당신이 '좋아요' 한 바로 그 게임!</p>
                                 
                             </div>
                             
@@ -69,10 +69,10 @@
                                   <router-link :to="{name : 'boardgame', params: {idx : g.Board_game_ID}}">
                                     <h4 class="text-primary display-4 text-uppercase" style="margin-left:20px; margin-right:20px; float:left;">{{ checkBoardTitle(g.Title) }}</h4>
                                   </router-link>
-                                   
-                                   <div style="position: absolute; right: 10%;">
+                                  <div style="position: absolute; right: 10%;">
                                   <ReviewRating :grade="g.Average_rating" :maxStars="5" :hasCounter="true" />
                                    </div>
+                                   
                                 
                                    </div>
                                     <p class="description mt-3"> 
@@ -114,15 +114,13 @@
 <script>
 import axios from 'axios'
 import Rating from '../components/Ratings.vue'
-import GameRating from '../components/GameRating.vue'
 import ReviewRating from '../components/ReviewRating.vue'
 export default {
 
   name: "home",
  components: {
     Rating,
-    GameRating,
-    ReviewRating,
+    ReviewRating
   },
   data() {
     return {
@@ -131,7 +129,7 @@ export default {
         pageSize: 6,
         
       },
-      recommandGames: '',
+      likeGames: '',
       toggleHeart: [],
       genreList:'',
 
@@ -140,13 +138,8 @@ export default {
     
   },
   async beforeCreate() { //백엔드에서 games 가져오는 rest.
-            const result = await axios.get("/api/games/recommand");
-            this.recommandGames = result.data;
-            if(this.recommandGames=='')
-            {
-                 const allresult = await axios.get("/api/games/all");
-                 this.recommandGames= allresult.data;
-            }
+            const result = await axios.get("/api/games/likes");
+            this.likeGames = result.data;
 
            
   },
@@ -165,14 +158,11 @@ export default {
             const start = (this.pagination.currentPage-1) * this.pagination.pageSize,
                 end = start + this.pagination.pageSize;
             
-            let result = this.recommandGames.slice(start, end);//get으로 page 크기만큼 보드게임 정보 DB에서 받아오기!!!
+            let result = this.likeGames.slice(start, end);//get으로 page 크기만큼 보드게임 정보 DB에서 받아오기!!!
             return result;
         },
         
-        Heart2game(boardgameID)
-        {
-            this.toggleHeart = !this.toggleHeart;
-        }
+        
     },
     
 };
