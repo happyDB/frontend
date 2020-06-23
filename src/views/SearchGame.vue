@@ -52,7 +52,7 @@
                                         <span class="input-group-text">
                                             <i class="ni ni-zoom-split-in"></i>
                                         </span>
-                                        <input v-model="title" @change="onChangeForTitle($event)" aria-describedby="addon-right addon-left" placeholder=" Title" class="form-control"> 
+                                        <input v-model="title" @change="onChangeForTitle($event)" @keyup.enter="onSubmitForm" aria-describedby="addon-right addon-left" placeholder=" Title" class="form-control"> 
                                     </div>                                                                                                       
                                 </div>
                                 <br>
@@ -503,21 +503,12 @@
                 </card>
             </div>
         </section>
-         <section  v-if="check" class="section section-lg pt-lg-0 mt--200">
+        <br>
+        <br>
+        <br>
+        <br>
+         <section  v-if="isSearched" class="section section-lg pt-lg-0 mt--200">
             <div class="container">
-                         
-                <div class="order-menu">
-                  <span style="margin: 7px;">
-                      <a slot="title" href="#/recommand" > 
-                      <i class="fa fa-check"/> 맞춤 추천 
-                      </a> 
-                      </span>|  
-                      <span style="margin: 7px;"> 
-                          <a slot="title" href="#/recommand"> 
-                          <i class="fa fa-star"/> 평점순  
-                          </a>
-                      </span>
-                </div>
                 <div class="row justify-content-center">
 
                     <div class="col-lg-12">
@@ -612,16 +603,11 @@ export default {
       wholeTypes : ["기억력", "세트 모으기", "거래/교역", "일꾼 놓기", "덱(풀) 만들기", "영역내 영향력", "팀 플레이", "격자에서 이동", "가위바위보", "협력", "물류", "상품 투기", "카드 드레프트", "패턴 만들기", "주사위 굴림", "동시 선택", "영역 이동", "조립식 게임판", "네트워크 건설", "베팅", "비밀리 유닛 배치", "액션 포인트", "그림 그리기", "주식", "연기하기", "트릭 테이킹", "시뮬레이션", "전투 카드 위주", "스토리텔링", "역할 맡기", "경매", "프로그래밍", "지점 간 이동", "타일 놓기", "복불복", "퍼즐", "영역 둘러싸기", "주사위(룰렛) 굴리고 이동", "참가자 탈락시키기", "투표", "플레이어간 다양한 능력 발휘", "치고받기", "캠페인", "시간 추적", "육각 타일과 카운터", "노래하기"],
       notCheckedTypes : [],
       genreNotAllSelected : true,
-      typeNotAllSelected : true,
-      check: false
+      typeNotAllSelected : true
     }
     
   },
   methods:{
-        checkToggle()
-        {
-            this.check=!this.check;
-        },
         getPageIndex(index)
         {
             this.pagination.currentPage=index;
@@ -660,7 +646,6 @@ export default {
                 
             }).then(()=>{
                 this.isFolded();
-                this.checkToggle();
             });
 
             
@@ -712,7 +697,7 @@ export default {
         typeSelect : function(){
             this.typeNotAllSelected = false;
         },
-          paginatedData() {
+        paginatedData() {
             const start = (this.pagination.currentPage-1) * this.pagination.pageSize,
                 end = start + this.pagination.pageSize;
             
